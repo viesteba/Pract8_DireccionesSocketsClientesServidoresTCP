@@ -59,3 +59,26 @@ public static void Apartado4() throws IOException{
         s.close();
     }
 }
+public static void Apartado5() throws IOException{
+    //Servidor de tablas de multiplicar
+    ServerSocket ss = new ServerSocket(55555);
+    while(true){
+        Socket s = ss.accept();
+        //no podemos poner ningun puerto entre 0 y 1023, es preferible que sea superior a 2x52
+        PrintWriter salida = new PrintWriter(s.getOutputStream(),true);
+        Scanner entrada = new Scanner(s.getInputStream());
+        salida.println("Bienvenido al servidor de Redes. Introduce un número entre 1 y 9");
+        //Esperar a que lo reciba y cuando lo reciba enviar la tabla de multiplicar
+        //Si le pone el número 0 cierra la conexión
+        //Si le pone un número negativo raro como -33 333 cierra el servidor
+        //Para cualquier otro número envía la tabla de multiplicar.
+        salida.flush();
+        int multiplicando = entrada.nextInt();
+        for(int multiplicador = 1; multiplicador <10; multiplicador++){
+            salida.println(multiplicando + "x" + multiplicador);
+        }
+        salida.flush();
+        salida.
+    }
+
+}
